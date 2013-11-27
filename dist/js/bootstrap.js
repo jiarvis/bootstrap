@@ -916,8 +916,18 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
     })
   }
 
+  Modal.prototype.lock = function() {
+	  this.lock = true
+  }
+
+  Modal.prototype.unlock = function() {
+	  this.lock = false
+  }
+
   Modal.prototype.hide = function (e) {
     if (e) e.preventDefault()
+
+	if(this.lock) return
 
     e = $.Event('hide.bs.modal')
 
